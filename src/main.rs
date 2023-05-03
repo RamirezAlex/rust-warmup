@@ -71,6 +71,8 @@ fn prime_numbers(n: u32) -> Vec<u32> {
 }
 
 fn main() {
+    let name = "Alex";
+    println!("Hello, {name}!");
     println!("Hello, world!");
     println!("I'm a Rustacean!");
     println!("{}", fibonnaci(3));
@@ -107,7 +109,7 @@ mod tests {
         assert_eq!(super::fizzbuzz(15), super::FizzBuzzResult::FizzBuzz);
         assert_eq!(super::fizzbuzz(17), super::FizzBuzzResult::Number(17));
     }
-    
+
     #[test]
     fn test_factorial() {
         assert_eq!(super::factorial(0), 1);
@@ -125,8 +127,14 @@ mod tests {
     fn test_prime_numbers() {
         assert_eq!(super::prime_numbers(0), vec![]);
         assert_eq!(super::prime_numbers(5), vec![2, 3, 5, 7, 11]);
-        assert_eq!(super::prime_numbers(10), vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
-        assert_eq!(super::prime_numbers(15), vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]);
+        assert_eq!(
+            super::prime_numbers(10),
+            vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        );
+        assert_eq!(
+            super::prime_numbers(15),
+            vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        );
     }
 
     #[test]
@@ -139,4 +147,3 @@ mod tests {
         assert_eq!(super::is_palindrome("aa".to_string()), true);
     }
 }
-
