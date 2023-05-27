@@ -1,3 +1,5 @@
+mod user;
+
 #[derive(Debug, PartialEq)]
 enum FizzBuzzResult {
     Fizz,
@@ -36,6 +38,15 @@ fn fizzbuzz(n: u32) -> FizzBuzzResult {
     FizzBuzzResult::Number(n)
 }
 
+fn fizzbuzz2(n: i32) -> FizzBuzzResult {
+    match (n % 3, n % 5) {
+        (0, 0) => FizzBuzzResult::FizzBuzz,
+        (0, _) => FizzBuzzResult::Fizz,
+        (_, 0) => FizzBuzzResult::Buzz,
+        _ => FizzBuzzResult::Number(n as u32),
+    }
+}
+
 fn is_palindrome(s: String) -> bool {
     let t: String = s.chars().rev().collect();
     return s == t;
@@ -71,15 +82,23 @@ fn prime_numbers(n: u32) -> Vec<u32> {
 }
 
 fn main() {
+    let user = user::User::new(
+        1,
+        "Alex".to_string(),
+        "a@a.com".to_string(),
+        "123".to_string(),
+    );
     let name = "Alex";
     println!("Hello, {name}!");
     println!("Hello, world!");
     println!("I'm a Rustacean!");
     println!("{}", fibonnaci(3));
     println!("{:?}", fizzbuzz(5));
+    println!("{:?}", fizzbuzz2(18));
     println!("{}", factorial(3));
     println!("{:?}", prime_numbers(5));
     println!("{}", is_palindrome("hannah".to_string()));
+    println!("{:?}", user);
 }
 
 #[cfg(test)]
@@ -108,6 +127,14 @@ mod tests {
         assert_eq!(super::fizzbuzz(5), super::FizzBuzzResult::Buzz);
         assert_eq!(super::fizzbuzz(15), super::FizzBuzzResult::FizzBuzz);
         assert_eq!(super::fizzbuzz(17), super::FizzBuzzResult::Number(17));
+    }
+
+    #[test]
+    fn test_fizzbuzz2() {
+        assert_eq!(super::fizzbuzz2(3), super::FizzBuzzResult::Fizz);
+        assert_eq!(super::fizzbuzz2(5), super::FizzBuzzResult::Buzz);
+        assert_eq!(super::fizzbuzz2(15), super::FizzBuzzResult::FizzBuzz);
+        assert_eq!(super::fizzbuzz2(17), super::FizzBuzzResult::Number(17));
     }
 
     #[test]
