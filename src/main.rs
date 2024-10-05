@@ -8,14 +8,6 @@ enum FizzBuzzResult {
     Number(u32),
 }
 
-fn factorial(n: i32) -> i32 {
-    if n == 0 {
-        1
-    } else {
-        n * factorial(n - 1)
-    }
-}
-
 fn fibonnaci(n: u32) -> u32 {
     if n == 0 {
         0
@@ -47,9 +39,17 @@ fn fizzbuzz2(n: i32) -> FizzBuzzResult {
     }
 }
 
+fn factorial(n: i32) -> i32 {
+    if n == 0 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
 fn is_palindrome(s: String) -> bool {
     let t: String = s.chars().rev().collect();
-    return s == t;
+    s == t
 }
 
 fn is_prime(n: u32) -> bool {
